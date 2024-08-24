@@ -130,7 +130,7 @@ app.get("/posts",async(request,response)=>{
 app.get("/userAuthenticatePosts",authenticationToken,async(request,response)=>{
     const {user_id} = request
     const {title='',genre=''} = request.query
-    const getPosts = `SELECT * FROM blog WHERE user_id = ${user_id} AND title LIKE "%${title}%" OR genre LIKE "%${genre}%";`
+    const getPosts = `SELECT * FROM blog WHERE user_id = ${user_id} AND (title LIKE "%${title}%" AND genre LIKE "%${genre}%");`
     const responseBlogs = await db.all(getPosts)
     response.send(responseBlogs.map(eachBlog=>blogDetails(eachBlog)))
 })

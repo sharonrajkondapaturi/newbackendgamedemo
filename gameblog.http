@@ -37,14 +37,13 @@ Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hb
 }
 
 ###
-
-GET http://localhost:4000/userAuthenticatePosts?title=Resident%20%evil&genre=Racing
+GET http://localhost:4000/userAuthenticatePosts?title=&genre=ACTION
 Content-Type: application/json
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywidXNlcm5hbWUiOiJIYW5uYWgiLCJpYXQiOjE3MjQ0ODAyNjl9.4h6B9i9tp5MG9KIBU2VuOVJ9B3hWzUmLu3KyL2GKCus
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJLZXZpbiIsImlhdCI6MTcyNDUxNDg3Mn0.cfYknKaUBPcEFn29Svyvo6mFFDELJPP2LOqliQ2HSAA
 
 ###
 
-GET http://localhost:4000/posts/?title=&genre=
+GET http://localhost:4000/posts/?title=AssassinsCreedValhalla:DawnofRagnarokReview(PS5)&genre=Action
 Content-Type: application/json
 
 ###
