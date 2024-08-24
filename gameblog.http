@@ -4,8 +4,8 @@ POST http://localhost:4000/register
 Content-Type: application/json
 
 {
-    "username":"SharonRaj",
-    "password":"84249418"
+    "username":"Kevin",
+    "password":"musickey"
 }
 
 ###
@@ -14,8 +14,8 @@ POST http://localhost:4000/login
 Content-Type: application/json
 
 {
-    "username":"SharonRaj",
-    "password":"84249418"
+    "username":"Hannah",
+    "password":"19942004"
 }
 
 
@@ -24,24 +24,23 @@ Content-Type: application/json
 
 POST http://localhost:4000/posts
 Content-Type: application/json
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJTaGFyb25SYWoiLCJpYXQiOjE3MjQ0MzQxOTh9.N-7qkMsaGZadrInMJiyA2WgUUinUJBiVxhwCO4Cb6z0
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywidXNlcm5hbWUiOiJIYW5uYWgiLCJpYXQiOjE3MjQ0ODAyNjl9.4h6B9i9tp5MG9KIBU2VuOVJ9B3hWzUmLu3KyL2GKCus
 
 {
-    "title":"Resident Evil 2 Remake",
-    "genre":"Survival horror",
+    "title":"Need for Speed Payback's Biggest Sin? Competency",
+    "genre":"Racing",
     "content":"Having recently completed the first game, that was my natural comparison point going in, and some big differences were immediately clear. First, this is a full remake, and it shows. The graphics are up there with the best modern games and we get full cinematic cut scenes that don’t just look like PS2 models with HD textures applied. The flip side of this is that the first game’s gorgeous static backgrounds are gone – but hey, you can’t have everything.Instead of static cameras, we now look over the main characters’ shoulders in third person, and oh the things we see from this new perspective. The increased graphical fidelity makes much more gore possible this time out, and the game revels in it, with close-ups of bodies being ripped apart and bits of zombies’ faces being blown off as you shoot them. I don’t think it’s an exaggeration to say this could be the most violent video game I’ve ever played in terms of the detail and volume of blood and guts on display.I remarked that Resident Evil felt like a puzzle game in horror dressing, but its sequel strays further towards the scary end of the spectrum, combining both jump scares and psychological horror. Much of the game is spent exploring dark areas with a torch, dreading whatever might be lurking around the next corner. Hidden zombies will startle you, not least because grabs are harder to avoid, but some of the game’s most effective mechanics - which we’ll cover later - are the ones that build a quiet and persistent sense of dread.",
-    "image_url":"https://staticg.sportskeeda.com/editor/2019/02/352b3-15492128998978-800.jpg",
-    "video_url":"https://www.youtube.com/watch?v=u3wS-Q2KBpk",
-    "company":"Capcom",
-    "official_website":"https://www.residentevil2.com/us/"
+    "image_url":"https://cdn.mos.cms.futurecdn.net/iPjAi5Nn52JXb3o6wFPV2D-1200-80.jpg",
+    "video_url":"https://youtu.be/K-5EdHZ0hBs",
+    "company":"EA Sports",
+    "official_website":"https://www.ea.com/games/need-for-speed/need-for-speed-payback"
 }
-
 
 ###
 
 GET http://localhost:4000/userAuthenticatePosts
 Content-Type: application/json
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJTaGFyb25SYWoiLCJpYXQiOjE3MjQ0MzQxOTh9.N-7qkMsaGZadrInMJiyA2WgUUinUJBiVxhwCO4Cb6z0
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywidXNlcm5hbWUiOiJIYW5uYWgiLCJpYXQiOjE3MjQ0ODAyNjl9.4h6B9i9tp5MG9KIBU2VuOVJ9B3hWzUmLu3KyL2GKCus
 
 ###
 
