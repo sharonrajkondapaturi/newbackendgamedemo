@@ -121,19 +121,21 @@ const blogDetails = (eachBlog)=>{
 }
 
 app.get("/posts",async(request,response)=>{
-    const getPosts = `SELECT * FROM blog`
+    const {title='',genre=''} = request.query
+    const getPosts = `SELECT * FROM blog WHERE title LIKE "%${title}%" OR genre LIKE "%${genre}%";`
     const responseBlogs = await db.all(getPosts)
     response.send(responseBlogs.map(eachBlog=>blogDetails(eachBlog)))
 })
 
 app.get("/userAuthenticatePosts",authenticationToken,async(request,response)=>{
     const {user_id} = request
-    const getPosts = `SELECT * FROM blog WHERE user_id = ${user_id};`
+    const {title='',genre=''} = request.query
+    const getPosts = `SELECT * FROM blog WHERE user_id = ${user_id} AND title LIKE "%${title}%" OR genre LIKE "%${genre}%";`
     const responseBlogs = await db.all(getPosts)
     response.send(responseBlogs.map(eachBlog=>blogDetails(eachBlog)))
 })
 
-app.get("/post/:id",async(request,response)=>{
+app.get("/posts/:id",async(request,response)=>{
     const {id} = request.params
     const getPost = `SELECT * FROM blog WHERE id = ${id};`
     const responseBlogs = await db.all(getPost)

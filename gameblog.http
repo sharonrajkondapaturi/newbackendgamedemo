@@ -38,13 +38,13 @@ Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywidXNlcm5hb
 
 ###
 
-GET http://localhost:4000/userAuthenticatePosts
+GET http://localhost:4000/userAuthenticatePosts?title=Resident%20%evil&genre=Racing
 Content-Type: application/json
 Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywidXNlcm5hbWUiOiJIYW5uYWgiLCJpYXQiOjE3MjQ0ODAyNjl9.4h6B9i9tp5MG9KIBU2VuOVJ9B3hWzUmLu3KyL2GKCus
 
 ###
 
-GET http://localhost:4000/posts
+GET http://localhost:4000/posts/?title=Resident%20%evil&genre=Racing
 Content-Type: application/json
 
 ###
@@ -63,3 +63,12 @@ Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywidXNlcm5hb
     "official_website":"https://www.ea.com/games/need-for-speed/need-for-speed-payback"
 }
 
+###
+
+GET http://localhost:4000/posts/7
+Content-Type: application/json
+
+
+DELETE http://localhost:4000/posts/7
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywidXNlcm5hbWUiOiJIYW5uYWgiLCJpYXQiOjE3MjQ0ODAyNjl9.4h6B9i9tp5MG9KIBU2VuOVJ9B3hWzUmLu3KyL2GKCus
