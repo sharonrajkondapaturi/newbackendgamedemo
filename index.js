@@ -133,6 +133,13 @@ app.get("/userAuthenticatePosts",authenticationToken,async(request,response)=>{
     response.send(responseBlogs.map(eachBlog=>blogDetails(eachBlog)))
 })
 
+app.get("/post/:id",async(request,response)=>{
+    const {id} = request.params
+    const getPost = `SELECT * FROM blog WHERE id = ${id};`
+    const responseBlogs = await db.all(getPost)
+    response.send(responseBlogs.map(eachBlog=>blogDetails(eachBlog)))
+})
+
 app.post("/posts",authenticationToken,async(request,response)=>{
     const date = new Date()
     let exactSeconds;
@@ -167,11 +174,21 @@ app.put("/posts/:id",authenticationToken,async(request,response)=>{
     const exactDate = `${date.getDate()}`+"/"+`${date.getMonth()}`+"/"+`${date.getFullYear()}`
     const exactTime = `${date.getHours()}`+":"+`${date.getMinutes()}`+":"+`${exactSeconds}`
     const {user_id,username} = request
+    const {id} = request.params
     const {title,genre,content,image_url,video_url,company,official_website} = request.body
-    const updateQuery = `UPDATE TABLE blog SET user_id = ${user_id}, title = "${title}", genre = "${genre}", content = "${content}",
+    const updateQuery = `UPDATE blog SET user_id = ${user_id}, title = "${title}", genre = "${genre}", content = "${content}",
     published_by = "${username}", published_date = "${exactDate}", published_time = "${exactTime}", image_url = "${image_url}",
-    video_url = "${video_url}",company = "${company}", official_website = "${official_website}");`
+    video_url = "${video_url}",company = "${company}", official_website = "${official_website}" WHERE id = ${id};`
     await db.run(updateQuery)
+    const getPosts = "SELECT * FROM blog"
+    const responseBlogs = await db.all(getPosts)
+    response.send(responseBlogs.map(eachBlog=>blogDetails(eachBlog)))
+})
+
+app.delete("/posts/:id",authenticationToken,async(request,response)=>{
+    const {id} = request.params
+    const deletePost = `DELETE FROM blog WHERE id = ${id}`
+    await db.run(deletePost)
     const getPosts = "SELECT * FROM blog"
     const responseBlogs = await db.all(getPosts)
     response.send(responseBlogs.map(eachBlog=>blogDetails(eachBlog)))

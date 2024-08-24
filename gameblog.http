@@ -46,3 +46,20 @@ Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywidXNlcm5hb
 
 GET http://localhost:4000/posts
 Content-Type: application/json
+
+###
+
+PUT http://localhost:4000/posts/7
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywidXNlcm5hbWUiOiJIYW5uYWgiLCJpYXQiOjE3MjQ0ODAyNjl9.4h6B9i9tp5MG9KIBU2VuOVJ9B3hWzUmLu3KyL2GKCus
+
+{
+    "title":"Need for Speed Payback's Biggest Sin? Competency",
+    "genre":"Racing",
+    "content":"Near the beginning of this post, I implied that this is an arcade-racer, but the fluff you need to get through to even get to the open world makes it seem more like a D-grade movie with an unlimited budget, rather than a cool racing game with cars and an open world. It does the typical ‘start you off in the middle of a heist/job/event’ thing, and it's easily 30 minutes before you're even in the open world. Not that it matters, because even when that happens, you're forced to either engage in specific story events one at a time, or just drive around the empty world not doing much of anything at all. What's the point of a open world, then? I'll give the developers some credit, though: The music was done very well. Not the soundtrack itself, mind you - it's largely generic 'action' music - but the way that it's delivered. It does this neat thing where the volume is tied to the speedometer, so the soundtrack is silent at idle, and then gets louder as you gather speed. Very well done. I haven't seen a soundtrack this dynamic in a driving game since OnRush dynamically adjusted the soundtrack in real-time depending on what your vehicle was doing moment-to-moment (flying, landing, boosting, etc). OnRush did it better, but Payback did it well.",
+    "image_url":"https://cdn.mos.cms.futurecdn.net/iPjAi5Nn52JXb3o6wFPV2D-1200-80.jpg",
+    "video_url":"https://youtu.be/K-5EdHZ0hBs",
+    "company":"EA Sports",
+    "official_website":"https://www.ea.com/games/need-for-speed/need-for-speed-payback"
+}
+
