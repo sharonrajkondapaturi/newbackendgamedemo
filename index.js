@@ -145,14 +145,21 @@ app.get("/posts/:id",async(request,response)=>{
 app.post("/posts",authenticationToken,async(request,response)=>{
     const date = new Date()
     let exactSeconds;
+    let exactMinutes;
     if(date.getSeconds() <= 9){
         exactSeconds = "0"+`${date.getSeconds()}`
     }
-    else{
+    if(date.getMinutes() <= 9){
+        exactMinutes = "0"+`${date.getMinutes()}`
+    }
+    if(date.getSeconds() > 9){
         exactSeconds = date.getSeconds()
     }
+    if(date.getMinutes() > 9){
+        exactMinutes = date.getMinutes()
+    }
     const exactDate = `${date.getDate()}`+"/"+`${date.getMonth()}`+"/"+`${date.getFullYear()}`
-    const exactTime = `${date.getHours()}`+":"+`${date.getMinutes()}`+":"+`${exactSeconds}`
+    const exactTime = `${date.getHours()}`+":"+`${exactMinutes}`+":"+`${exactSeconds}`
     const {user_id,username} = request
     const {title,genre,content,image_url,video_url,company,official_website} = request.body
     const postBlog = `INSERT INTO blog(user_id,title,genre,content,published_by,published_date,published_time,image_url,video_url,company,
@@ -167,14 +174,21 @@ app.post("/posts",authenticationToken,async(request,response)=>{
 app.put("/posts/:id",authenticationToken,async(request,response)=>{
     const date = new Date()
     let exactSeconds;
+    let exactMinutes;
     if(date.getSeconds() <= 9){
         exactSeconds = "0"+`${date.getSeconds()}`
     }
-    else{
+    if(date.getMinutes() <= 9){
+        exactMinutes = "0"+`${date.getMinutes()}`
+    }
+    if(date.getSeconds() > 9){
         exactSeconds = date.getSeconds()
     }
+    if(date.getMinutes() > 9){
+        exactMinutes = date.getMinutes()
+    }
     const exactDate = `${date.getDate()}`+"/"+`${date.getMonth()}`+"/"+`${date.getFullYear()}`
-    const exactTime = `${date.getHours()}`+":"+`${date.getMinutes()}`+":"+`${exactSeconds}`
+    const exactTime = `${date.getHours()}`+":"+`${exactMinutes}`+":"+`${exactSeconds}`
     const {user_id,username} = request
     const {id} = request.params
     const {title,genre,content,image_url,video_url,company,official_website} = request.body
