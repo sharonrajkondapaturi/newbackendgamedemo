@@ -120,17 +120,26 @@ const blogDetails = (eachBlog)=>{
     }
 }
 
+const commentDetails = (eachComment)=>{
+    return{
+        id:eachComment.id,
+        user_id:eachComment.user_id,
+        blog_id:eachComment.blog_id,
+        username:eachComment.username,
+        comment_date:eachComment.comment_date
+    }
+}
+
 app.get("/posts",async(request,response)=>{
-    const {title='',genre=''} = request.query
-    const getPosts = `SELECT * FROM blog WHERE title LIKE "%${title}%" OR genre LIKE "%${genre}%";`
+    const {title=''} = request.query
+    const getPosts = `SELECT * FROM blog WHERE title LIKE "${title}%";`
     const responseBlogs = await db.all(getPosts)
     response.send(responseBlogs.map(eachBlog=>blogDetails(eachBlog)))
 })
 
 app.get("/userAuthenticatePosts",authenticationToken,async(request,response)=>{
     const {user_id} = request
-    const {title='',genre=''} = request.query
-    const getPosts = `SELECT * FROM blog WHERE user_id = ${user_id} AND (title LIKE "%${title}%" AND genre LIKE "%${genre}%");`
+    const getPosts = `SELECT * FROM blog WHERE user_id = ${user_id};`
     const responseBlogs = await db.all(getPosts)
     response.send(responseBlogs.map(eachBlog=>blogDetails(eachBlog)))
 })
@@ -196,16 +205,43 @@ app.put("/posts/:id",authenticationToken,async(request,response)=>{
     published_by = "${username}", published_date = "${exactDate}", published_time = "${exactTime}", image_url = "${image_url}",
     video_url = "${video_url}",company = "${company}", official_website = "${official_website}" WHERE id = ${id};`
     await db.run(updateQuery)
-    const getPosts = "SELECT * FROM blog"
+    const getPosts = `SELECT * FROM blog`
     const responseBlogs = await db.all(getPosts)
     response.send(responseBlogs.map(eachBlog=>blogDetails(eachBlog)))
 })
 
+app.get("/post/:id/comments",authenticationToken,async(request,response)=>{
+    const {id} = request.params
+    const getCommentQuery = `SELECT * FROM comments WHERE blog_id = ${id}`
+    const responseComments = await db.all(getCommentQuery)
+    response.send(responseComments.map(eachComment=> commentDetails(eachComment)))
+})
+app.post("/posts/:id/comments",authenticationToken,async(request,response)=>{
+    const {user_id,username} = request
+    const {id} = request.params
+    const {blog_id,comment,comment_date} = request.body
+    const postCommentQuery = `
+    INSERT INTO comments (user_id,blog_id,username,comment,comment_date) 
+    VALUES (${user_id},${blog_id},"${username}","${comment}","${comment_date}")
+    `
+    await db.run(postCommentQuery)
+    const getComments = `SELECT * FROM comments WHERE blog_id = ${id}`
+    const responseComments = await db.all(getComments)
+    response.send(responseComments.map(eachComment=>commentDetails(eachComment)))
+})
+app.delete("/comments/:id",authenticationToken,async(request,response)=>{
+    const {id} = request.params
+    const deleteComment = `DELETE FROM comments WHERE id = ${id}`
+    await db.run(deleteComment)
+    const getCommentQuery = `SELECT * FROM comments WHERE id = ${id}`
+    const responseComments = await db.all(getCommentQuery)
+    response.send(responseComments.map(eachComment=> commentDetails(eachComment)))
+})
 app.delete("/posts/:id",authenticationToken,async(request,response)=>{
     const {id} = request.params
     const deletePost = `DELETE FROM blog WHERE id = ${id}`
     await db.run(deletePost)
-    const getPosts = "SELECT * FROM blog"
+    const getPosts = `SELECT * FROM blog`
     const responseBlogs = await db.all(getPosts)
     response.send(responseBlogs.map(eachBlog=>blogDetails(eachBlog)))
 })

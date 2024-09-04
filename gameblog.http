@@ -14,8 +14,8 @@ POST http://localhost:4000/login
 Content-Type: application/json
 
 {
-    "username":"Kevin",
-    "password":"musickey"
+    "username":"SharonRaj",
+    "password":"84249418"
 }
 
 
@@ -37,13 +37,13 @@ Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hb
 }
 
 ###
-GET http://localhost:4000/userAuthenticatePosts?title=&genre=ACTION
+GET http://localhost:4000/userAuthenticatePosts
 Content-Type: application/json
 Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJLZXZpbiIsImlhdCI6MTcyNDUxNDg3Mn0.cfYknKaUBPcEFn29Svyvo6mFFDELJPP2LOqliQ2HSAA
 
 ###
 
-GET http://localhost:4000/posts/?title=AssassinsCreedValhalla:DawnofRagnarokReview(PS5)&genre=Action
+GET http://localhost:4000/posts/?title=N
 Content-Type: application/json
 
 ###
@@ -68,6 +68,24 @@ GET http://localhost:4000/posts/7
 Content-Type: application/json
 
 
+###
+
+
 DELETE http://localhost:4000/posts/7
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywidXNlcm5hbWUiOiJIYW5uYWgiLCJpYXQiOjE3MjQ0ODAyNjl9.4h6B9i9tp5MG9KIBU2VuOVJ9B3hWzUmLu3KyL2GKCus
+
+
+###
+
+GET http://localhost:4000/posts/2/comments/
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywidXNlcm5hbWUiOiJIYW5uYWgiLCJpYXQiOjE3MjQ0ODAyNjl9.4h6B9i9tp5MG9KIBU2VuOVJ9B3hWzUmLu3KyL2GKCus
+
+POST http://localhost:4000/posts/2/comments/
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywidXNlcm5hbWUiOiJIYW5uYWgiLCJpYXQiOjE3MjQ0ODAyNjl9.4h6B9i9tp5MG9KIBU2VuOVJ9B3hWzUmLu3KyL2GKCus
+
+DELETE http://localhost:4000/comments/2
 Content-Type: application/json
 Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywidXNlcm5hbWUiOiJIYW5uYWgiLCJpYXQiOjE3MjQ0ODAyNjl9.4h6B9i9tp5MG9KIBU2VuOVJ9B3hWzUmLu3KyL2GKCus
