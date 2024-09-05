@@ -103,6 +103,7 @@ app.post("/login",async(request,response)=>{
 
 })
 
+//use to map the blog details
 const blogDetails = (eachBlog)=>{
     return{
             id:eachBlog.id,
@@ -120,12 +121,14 @@ const blogDetails = (eachBlog)=>{
     }
 }
 
+//use to map the commentDetails
 const commentDetails = (eachComment)=>{
     return{
         id:eachComment.id,
         user_id:eachComment.user_id,
         blog_id:eachComment.blog_id,
         username:eachComment.username,
+        comment:eachComment.comment,
         comment_date:eachComment.comment_date
     }
 }
@@ -210,7 +213,7 @@ app.put("/posts/:id",authenticationToken,async(request,response)=>{
     response.send(responseBlogs.map(eachBlog=>blogDetails(eachBlog)))
 })
 
-app.get("/post/:id/comments",authenticationToken,async(request,response)=>{
+app.get("/posts/:id/comments",authenticationToken,async(request,response)=>{
     const {id} = request.params
     const getCommentQuery = `SELECT * FROM comments WHERE blog_id = ${id}`
     const responseComments = await db.all(getCommentQuery)
@@ -219,10 +222,12 @@ app.get("/post/:id/comments",authenticationToken,async(request,response)=>{
 app.post("/posts/:id/comments",authenticationToken,async(request,response)=>{
     const {user_id,username} = request
     const {id} = request.params
-    const {blog_id,comment,comment_date} = request.body
+    const date = new Date()
+    const commentDate = `${date.getDate()}`+"/"+`${date.getMonth()}`+"/"+`${date.getFullYear()}`
+    const {comment} = request.body
     const postCommentQuery = `
     INSERT INTO comments (user_id,blog_id,username,comment,comment_date) 
-    VALUES (${user_id},${blog_id},"${username}","${comment}","${comment_date}")
+    VALUES (${user_id},${id},"${username}","${comment}","${commentDate}")
     `
     await db.run(postCommentQuery)
     const getComments = `SELECT * FROM comments WHERE blog_id = ${id}`

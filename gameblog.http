@@ -21,10 +21,9 @@ Content-Type: application/json
 
 ###
 
-
 POST http://localhost:4000/posts
 Content-Type: application/json
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJLZXZpbiIsImlhdCI6MTcyNDQ5MjU3NX0.LdsnRUgHeOF32U04pQKIlSVul6xincD9OZtE-nKoQg0
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJTaGFyb25SYWoiLCJpYXQiOjE3MjU0NjQwMTJ9.fa0RpQ4xo_RKuEZMz16JVducxARxFbhVZbgmXSVoLcc
 
 {
     "title":"Call of Duty Black Ops 3's story - explained",
@@ -37,20 +36,21 @@ Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hb
 }
 
 ###
+
 GET http://localhost:4000/userAuthenticatePosts
 Content-Type: application/json
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJLZXZpbiIsImlhdCI6MTcyNDUxNDg3Mn0.cfYknKaUBPcEFn29Svyvo6mFFDELJPP2LOqliQ2HSAA
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJTaGFyb25SYWoiLCJpYXQiOjE3MjU0NjQwMTJ9.fa0RpQ4xo_RKuEZMz16JVducxARxFbhVZbgmXSVoLcc
 
 ###
 
-GET http://localhost:4000/posts/?title=N
+GET http://localhost:4000/posts/?title=
 Content-Type: application/json
 
 ###
 
 PUT http://localhost:4000/posts/7
 Content-Type: application/json
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywidXNlcm5hbWUiOiJIYW5uYWgiLCJpYXQiOjE3MjQ0ODAyNjl9.4h6B9i9tp5MG9KIBU2VuOVJ9B3hWzUmLu3KyL2GKCus
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJTaGFyb25SYWoiLCJpYXQiOjE3MjU0NjQwMTJ9.fa0RpQ4xo_RKuEZMz16JVducxARxFbhVZbgmXSVoLcc
 
 {
     "title":"Need for Speed Payback's Biggest Sin? Competency",
@@ -64,7 +64,7 @@ Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywidXNlcm5hb
 
 ###
 
-GET http://localhost:4000/posts/7
+GET http://localhost:4000/posts/2
 Content-Type: application/json
 
 
@@ -73,19 +73,28 @@ Content-Type: application/json
 
 DELETE http://localhost:4000/posts/7
 Content-Type: application/json
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywidXNlcm5hbWUiOiJIYW5uYWgiLCJpYXQiOjE3MjQ0ODAyNjl9.4h6B9i9tp5MG9KIBU2VuOVJ9B3hWzUmLu3KyL2GKCus
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJTaGFyb25SYWoiLCJpYXQiOjE3MjU0NjQwMTJ9.fa0RpQ4xo_RKuEZMz16JVducxARxFbhVZbgmXSVoLcc
 
 
 ###
 
-GET http://localhost:4000/posts/2/comments/
+GET http://localhost:4000/posts/1/comments/
 Content-Type: application/json
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywidXNlcm5hbWUiOiJIYW5uYWgiLCJpYXQiOjE3MjQ0ODAyNjl9.4h6B9i9tp5MG9KIBU2VuOVJ9B3hWzUmLu3KyL2GKCus
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJTaGFyb25SYWoiLCJpYXQiOjE3MjU0NjQwMTJ9.fa0RpQ4xo_RKuEZMz16JVducxARxFbhVZbgmXSVoLcc
 
-POST http://localhost:4000/posts/2/comments/
+###
+
+POST http://localhost:4000/posts/1/comments/
 Content-Type: application/json
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywidXNlcm5hbWUiOiJIYW5uYWgiLCJpYXQiOjE3MjQ0ODAyNjl9.4h6B9i9tp5MG9KIBU2VuOVJ9B3hWzUmLu3KyL2GKCus
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJTaGFyb25SYWoiLCJpYXQiOjE3MjU0NjQwMTJ9.fa0RpQ4xo_RKuEZMz16JVducxARxFbhVZbgmXSVoLcc
+
+
+{
+    "comment":"Leon storyline is fantastic and although the game has cut down some clips compare to the old version of resident evil 2"
+}
+
+###
 
 DELETE http://localhost:4000/comments/2
 Content-Type: application/json
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywidXNlcm5hbWUiOiJIYW5uYWgiLCJpYXQiOjE3MjQ0ODAyNjl9.4h6B9i9tp5MG9KIBU2VuOVJ9B3hWzUmLu3KyL2GKCus
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJTaGFyb25SYWoiLCJpYXQiOjE3MjU0NjQwMTJ9.fa0RpQ4xo_RKuEZMz16JVducxARxFbhVZbgmXSVoLcc
