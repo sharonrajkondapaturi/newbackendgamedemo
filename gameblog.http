@@ -14,8 +14,8 @@ POST http://localhost:4000/login
 Content-Type: application/json
 
 {
-    "username":"SharonRaj",
-    "password":"84249418"
+    "username":"Kevin",
+    "password":"musickey"
 }
 
 
@@ -84,16 +84,26 @@ Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hb
 
 ###
 
-POST http://localhost:4000/posts/1/comments/
+POST http://localhost:4000/posts/2/comments/
 Content-Type: application/json
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJTaGFyb25SYWoiLCJpYXQiOjE3MjU0NjQwMTJ9.fa0RpQ4xo_RKuEZMz16JVducxARxFbhVZbgmXSVoLcc
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJLZXZpbiIsImlhdCI6MTcyNTYyNTE4MH0.-l6B73jb6jZ6ZNr8gtm9Yma2Mrh8TJjV_lcYRFKzFto
 
 
 {
-    "comment":"Leon storyline is fantastic and although the game has cut down some clips compare to the old version of resident evil 2"
+    "comment":"I enjoyed new Assassins skills from this DLC and Sutur had made a nightmare experience"
 }
 
 ###
+
+GET http://localhost:4000/comments/4
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJLZXZpbiIsImlhdCI6MTcyNTYyNTE4MH0.-l6B73jb6jZ6ZNr8gtm9Yma2Mrh8TJjV_lcYRFKzFto
+
+###
+
+POST http://localhost:4000/posts/1/comments/
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJTaGFyb25SYWoiLCJpYXQiOjE3MjU0NjQwMTJ9.fa0RpQ4xo_RKuEZMz16JVducxARxFbhVZbgmXSVoLcc
 
 DELETE http://localhost:4000/comments/2
 Content-Type: application/json

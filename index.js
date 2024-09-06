@@ -219,6 +219,12 @@ app.get("/posts/:id/comments",authenticationToken,async(request,response)=>{
     const responseComments = await db.all(getCommentQuery)
     response.send(responseComments.map(eachComment=> commentDetails(eachComment)))
 })
+app.get("/comments/:id",authenticationToken,async(request,response)=>{
+    const {id} = request.params
+    const getCommentQuery = `SELECT COUNT(*) as comments_count FROM comments WHERE blog_id = ${id}`
+    const responseComments = await db.get(getCommentQuery)
+    response.send(responseComments)
+})
 app.post("/posts/:id/comments",authenticationToken,async(request,response)=>{
     const {user_id,username} = request
     const {id} = request.params
