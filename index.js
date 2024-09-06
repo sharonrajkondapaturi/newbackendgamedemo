@@ -223,11 +223,10 @@ app.post("/posts/:id/comments",authenticationToken,async(request,response)=>{
     const {user_id,username} = request
     const {id} = request.params
     const date = new Date()
-    const commentDate = `${date.getDate()}`+"/"+`${date.getMonth()}`+"/"+`${date.getFullYear()}`
     const {comment} = request.body
     const postCommentQuery = `
     INSERT INTO comments (user_id,blog_id,username,comment,comment_date) 
-    VALUES (${user_id},${id},"${username}","${comment}","${commentDate}")
+    VALUES (${user_id},${id},"${username}","${comment}","${date}")
     `
     await db.run(postCommentQuery)
     const getComments = `SELECT * FROM comments WHERE blog_id = ${id}`
