@@ -14,8 +14,8 @@ POST http://localhost:4000/login
 Content-Type: application/json
 
 {
-    "username":"Kevin",
-    "password":"musickey"
+    "username":"Hannah",
+    "password":"19942004"
 }
 
 
@@ -23,16 +23,14 @@ Content-Type: application/json
 
 POST http://localhost:4000/posts
 Content-Type: application/json
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJTaGFyb25SYWoiLCJpYXQiOjE3MjU0NjQwMTJ9.fa0RpQ4xo_RKuEZMz16JVducxARxFbhVZbgmXSVoLcc
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywidXNlcm5hbWUiOiJIYW5uYWgiLCJpYXQiOjE3MjU3Njk5MTN9.ISvfYOu6LcMOJb70InEoX8UQVWx5CIOdqI_PXaUmeDo
 
 {
-    "title":"Call of Duty Black Ops 3's story - explained",
+    "title":"Prince of persia The Two Thrones is one of the best Triology",
     "genre":"Action",
-    "content":"I want to propose that the events of the game aren't just a dying dream, as many people seem to think, but a semi-real experience that is taking place in Taylor's mind. And yes, everybody who dies in the game is dead in real life - the events of the dream tie in directly with what is happening in reality. Years before the game takes place, Jacob Hendricks was in command of a Winslow Accord wetwork team known as Phi, consisting of himself, John Taylor, Dylan Stone, Javier Ramirez, Alice Conrad, Joseph Fierro, Eamon Xu and Hussein Patel. Their activities are the focus of the prequel comic books. Xu and Patel were KIA in 2059, and are irrelevant to the video game's plot. Stone, Ramirez, Conrad and Fierro, however, are crucial to understanding the actual events behind the plot. Stone, along with Ramirez, Conrad, and Fierro, responded to a priority alert signal coming from miles underground the abandoned Coalescence facility at the heart of the quarantine zone in Singapore. They discovered that the 54 Immortals were operating in the area, looking for something that the CDP had tipped them off about. After clearing them out, Stone's team inadvertently discovered what they were looking for: a long-abandoned CIA black project using involuntary human test subjects, which caused the disaster that killed 300,000 people in Singapore.",
-    "image_url":"https://i.ytimg.com/vi/vIg5dAeudvQ/maxresdefault.jpg",
-    "video_url":"https://youtu.be/qAUYNIDEJ6o",
-    "company":"Activision",
-    "official_website":"https://blog.activision.com/content/atvi/activision/atvi-touchui/web/en/blog/call-of-duty/archives/call-of-duty-black-ops-3--the-experience-continues"
+    "content":"So then, does the trilogy end on a high note or a low note? I’m gonna say it ends on a middle note. Coming fresh off of Warrior Within, we were on a  high during the first few hours of gameplay that, unfortunately, quickly faded each time we sat down to play for a few hours. We had a very sour taste in our mouths after finishing Warrior Within (by glitch-killing the Dahaka, of all things!). I did some sleuthing online and the general consensus seemed to be that Two Thrones was superior to its predecessor. Thank the gaming gods, because we weren’t sure if we could suffer through a repeat of Warrior Within without the Dahaka. The game starts off with the Prince and Kaileena returning to his city, only to find it in bloody squalor. Apparently the stuff he did in Warrior Within undid Sands of Time. Therefore, evil vizier hath returned. Half-naked Sand Empress gets kidnapped and the opening is you chasing her kidnappers through the city where blood is being shed all over the place thanks to pesky sand demons running amok. Traversing rooftops via wall-running and pole-jumping is familiar territory. Dagger plates and spring boards were added for more variety. Like my programming issues with the other PoP games, you have to hit the button before you actually want Prince to stick his dagger in the plate or spring from the board. I also didn’t like how there was a separate button command to spring from the boards or to spring from the boards and transition into an attack to kill the enemies waiting for you on whatever platform you’re advancing to. There’s never an instance when the player wouldn’t want to kill the enemy. Ever. So just kill them without making me remember to push a separate button when I’m already hectically button mashing X so he’ll jump instead of falling to his death for no reason. Because, again, response time in these games is terrible for the precision that is required.",
+    "image_url":"https://oyster.ignimgs.com/mediawiki/apis.ign.com/prince-of-persia-the-two-thrones/f/f3/Prince-of-Persia-The-Two-Thrones-PC.jpg",
+    "video_url":"https://youtu.be/0lZUZ08sh18"
 }
 
 ###
@@ -43,23 +41,21 @@ Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hb
 
 ###
 
-GET http://localhost:4000/posts/?title=
+GET http://localhost:4000/posts/
 Content-Type: application/json
 
 ###
 
-PUT http://localhost:4000/posts/7
+PUT http://localhost:4000/posts/11
 Content-Type: application/json
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJTaGFyb25SYWoiLCJpYXQiOjE3MjU0NjQwMTJ9.fa0RpQ4xo_RKuEZMz16JVducxARxFbhVZbgmXSVoLcc
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywidXNlcm5hbWUiOiJIYW5uYWgiLCJpYXQiOjE3MjU3Njk5MTN9.ISvfYOu6LcMOJb70InEoX8UQVWx5CIOdqI_PXaUmeDo
 
 {
-    "title":"Need for Speed Payback's Biggest Sin? Competency",
-    "genre":"Racing",
-    "content":"Near the beginning of this post, I implied that this is an arcade-racer, but the fluff you need to get through to even get to the open world makes it seem more like a D-grade movie with an unlimited budget, rather than a cool racing game with cars and an open world. It does the typical ‘start you off in the middle of a heist/job/event’ thing, and it's easily 30 minutes before you're even in the open world. Not that it matters, because even when that happens, you're forced to either engage in specific story events one at a time, or just drive around the empty world not doing much of anything at all. What's the point of a open world, then? I'll give the developers some credit, though: The music was done very well. Not the soundtrack itself, mind you - it's largely generic 'action' music - but the way that it's delivered. It does this neat thing where the volume is tied to the speedometer, so the soundtrack is silent at idle, and then gets louder as you gather speed. Very well done. I haven't seen a soundtrack this dynamic in a driving game since OnRush dynamically adjusted the soundtrack in real-time depending on what your vehicle was doing moment-to-moment (flying, landing, boosting, etc). OnRush did it better, but Payback did it well.",
-    "image_url":"https://cdn.mos.cms.futurecdn.net/iPjAi5Nn52JXb3o6wFPV2D-1200-80.jpg",
-    "video_url":"https://youtu.be/K-5EdHZ0hBs",
-    "company":"EA Sports",
-    "official_website":"https://www.ea.com/games/need-for-speed/need-for-speed-payback"
+    "title":"Prince of persia The Two Thrones was one of the best Triology",
+    "genre":"Action",
+    "content":"So then, does the trilogy end on a high note or a low note? I’m gonna say it ends on a middle note. Coming fresh off of Warrior Within, we were on a  high during the first few hours of gameplay that, unfortunately, quickly faded each time we sat down to play for a few hours. We had a very sour taste in our mouths after finishing Warrior Within (by glitch-killing the Dahaka, of all things!). I did some sleuthing online and the general consensus seemed to be that Two Thrones was superior to its predecessor. Thank the gaming gods, because we weren’t sure if we could suffer through a repeat of Warrior Within without the Dahaka. The game starts off with the Prince and Kaileena returning to his city, only to find it in bloody squalor. Apparently the stuff he did in Warrior Within undid Sands of Time. Therefore, evil vizier hath returned. Half-naked Sand Empress gets kidnapped and the opening is you chasing her kidnappers through the city where blood is being shed all over the place thanks to pesky sand demons running amok. Traversing rooftops via wall-running and pole-jumping is familiar territory. Dagger plates and spring boards were added for more variety. Like my programming issues with the other PoP games, you have to hit the button before you actually want Prince to stick his dagger in the plate or spring from the board. I also didn’t like how there was a separate button command to spring from the boards or to spring from the boards and transition into an attack to kill the enemies waiting for you on whatever platform you’re advancing to. There’s never an instance when the player wouldn’t want to kill the enemy. Ever. So just kill them without making me remember to push a separate button when I’m already hectically button mashing X so he’ll jump instead of falling to his death for no reason. Because, again, response time in these games is terrible for the precision that is required.",
+    "image_url":"https://oyster.ignimgs.com/mediawiki/apis.ign.com/prince-of-persia-the-two-thrones/f/f3/Prince-of-Persia-The-Two-Thrones-PC.jpg",
+    "video_url":"https://youtu.be/0lZUZ08sh18"
 }
 
 ###
@@ -80,7 +76,7 @@ Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hb
 
 GET http://localhost:4000/posts/1/comments/
 Content-Type: application/json
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJTaGFyb25SYWoiLCJpYXQiOjE3MjU0NjQwMTJ9.fa0RpQ4xo_RKuEZMz16JVducxARxFbhVZbgmXSVoLcc
+
 
 ###
 
@@ -104,6 +100,20 @@ Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hb
 POST http://localhost:4000/posts/1/comments/
 Content-Type: application/json
 Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJTaGFyb25SYWoiLCJpYXQiOjE3MjU0NjQwMTJ9.fa0RpQ4xo_RKuEZMz16JVducxARxFbhVZbgmXSVoLcc
+
+
+###
+
+PUT http://localhost:4000/posts/1/comments/2
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJTaGFyb25SYWoiLCJpYXQiOjE3MjU3NjQxNjh9.3BkIJNQER3h7SuYzKIPo3OWl-_voDQDlBdoWC8whqyU
+
+{
+    "comment":"Leon storyline is fantastic and although the game has cut down some clips compare to the previous version of resident evil 2"
+}
+
+###
+
 
 DELETE http://localhost:4000/comments/2
 Content-Type: application/json

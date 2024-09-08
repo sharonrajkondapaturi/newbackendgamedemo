@@ -31,6 +31,7 @@ const initializeDbAndServer = async()=>{
     }
 }
 
+//run the database
 initializeDbAndServer()
 
 //in order to access user resources authentication is generated using jwtToken and wit playload has the data of the user
@@ -113,11 +114,8 @@ const blogDetails = (eachBlog)=>{
             content:eachBlog.content,
             published_by:eachBlog.published_by,
             published_date:eachBlog.published_date,
-            published_time:eachBlog.published_time,
             image_url:eachBlog.image_url,
             video_url:eachBlog.video_url,
-            company:eachBlog.company,
-            official_website:eachBlog.official_website,
     }
 }
 
@@ -133,6 +131,7 @@ const commentDetails = (eachComment)=>{
     }
 }
 
+//use to get the posts
 app.get("/posts",async(request,response)=>{
     const {title=''} = request.query
     const getPosts = `SELECT * FROM blog WHERE title LIKE "${title}%";`
@@ -140,6 +139,7 @@ app.get("/posts",async(request,response)=>{
     response.send(responseBlogs.map(eachBlog=>blogDetails(eachBlog)))
 })
 
+//use to get the user posts
 app.get("/userAuthenticatePosts",authenticationToken,async(request,response)=>{
     const {user_id} = request
     const getPosts = `SELECT * FROM blog WHERE user_id = ${user_id};`
@@ -147,6 +147,7 @@ app.get("/userAuthenticatePosts",authenticationToken,async(request,response)=>{
     response.send(responseBlogs.map(eachBlog=>blogDetails(eachBlog)))
 })
 
+//use to get the post(blog) details
 app.get("/posts/:id",async(request,response)=>{
     const {id} = request.params
     const getPost = `SELECT * FROM blog WHERE id = ${id};`
@@ -154,77 +155,53 @@ app.get("/posts/:id",async(request,response)=>{
     response.send(responseBlogs.map(eachBlog=>blogDetails(eachBlog)))
 })
 
+//add  a new post
 app.post("/posts",authenticationToken,async(request,response)=>{
     const date = new Date()
-    let exactSeconds;
-    let exactMinutes;
-    if(date.getSeconds() <= 9){
-        exactSeconds = "0"+`${date.getSeconds()}`
-    }
-    if(date.getMinutes() <= 9){
-        exactMinutes = "0"+`${date.getMinutes()}`
-    }
-    if(date.getSeconds() > 9){
-        exactSeconds = date.getSeconds()
-    }
-    if(date.getMinutes() > 9){
-        exactMinutes = date.getMinutes()
-    }
     const exactDate = `${date.getDate()}`+"/"+`${date.getMonth()}`+"/"+`${date.getFullYear()}`
-    const exactTime = `${date.getHours()}`+":"+`${exactMinutes}`+":"+`${exactSeconds}`
     const {user_id,username} = request
-    const {title,genre,content,image_url,video_url,company,official_website} = request.body
-    const postBlog = `INSERT INTO blog(user_id,title,genre,content,published_by,published_date,published_time,image_url,video_url,company,
-    official_website) VALUES (${user_id},"${title}","${genre}","${content}","${username}","${exactDate}","${exactTime}","${image_url}",
-    "${video_url}","${company}","${official_website}");`
+    const {title,genre,content,image_url,video_url} = request.body
+    const postBlog = `INSERT INTO blog(user_id,title,genre,content,published_by,published_date,image_url,video_url) 
+    VALUES (${user_id},"${title}","${genre}","${content}","${username}","${exactDate}","${image_url}","${video_url}");`
     await db.run(postBlog)
     const getPosts = "SELECT * FROM blog"
     const responseBlogs = await db.all(getPosts)
     response.send(responseBlogs.map(eachBlog=>blogDetails(eachBlog)))
 })
 
+//update the post
 app.put("/posts/:id",authenticationToken,async(request,response)=>{
     const date = new Date()
-    let exactSeconds;
-    let exactMinutes;
-    if(date.getSeconds() <= 9){
-        exactSeconds = "0"+`${date.getSeconds()}`
-    }
-    if(date.getMinutes() <= 9){
-        exactMinutes = "0"+`${date.getMinutes()}`
-    }
-    if(date.getSeconds() > 9){
-        exactSeconds = date.getSeconds()
-    }
-    if(date.getMinutes() > 9){
-        exactMinutes = date.getMinutes()
-    }
     const exactDate = `${date.getDate()}`+"/"+`${date.getMonth()}`+"/"+`${date.getFullYear()}`
-    const exactTime = `${date.getHours()}`+":"+`${exactMinutes}`+":"+`${exactSeconds}`
     const {user_id,username} = request
     const {id} = request.params
-    const {title,genre,content,image_url,video_url,company,official_website} = request.body
+    const {title,genre,content,image_url,video_url} = request.body
     const updateQuery = `UPDATE blog SET user_id = ${user_id}, title = "${title}", genre = "${genre}", content = "${content}",
-    published_by = "${username}", published_date = "${exactDate}", published_time = "${exactTime}", image_url = "${image_url}",
-    video_url = "${video_url}",company = "${company}", official_website = "${official_website}" WHERE id = ${id};`
+    published_by = "${username}", published_date = "${exactDate}", image_url = "${image_url}",
+    video_url = "${video_url}" WHERE id = ${id};`
     await db.run(updateQuery)
     const getPosts = `SELECT * FROM blog`
     const responseBlogs = await db.all(getPosts)
     response.send(responseBlogs.map(eachBlog=>blogDetails(eachBlog)))
 })
 
-app.get("/posts/:id/comments",authenticationToken,async(request,response)=>{
+//get post comments
+app.get("/posts/:id/comments",async(request,response)=>{
     const {id} = request.params
     const getCommentQuery = `SELECT * FROM comments WHERE blog_id = ${id}`
     const responseComments = await db.all(getCommentQuery)
     response.send(responseComments.map(eachComment=> commentDetails(eachComment)))
 })
+
+//get the post comment count
 app.get("/comments/:id",authenticationToken,async(request,response)=>{
     const {id} = request.params
     const getCommentQuery = `SELECT COUNT(*) as comments_count FROM comments WHERE blog_id = ${id}`
     const responseComments = await db.get(getCommentQuery)
     response.send(responseComments)
 })
+
+//post a new comment
 app.post("/posts/:id/comments",authenticationToken,async(request,response)=>{
     const {user_id,username} = request
     const {id} = request.params
@@ -239,6 +216,22 @@ app.post("/posts/:id/comments",authenticationToken,async(request,response)=>{
     const responseComments = await db.all(getComments)
     response.send(responseComments.map(eachComment=>commentDetails(eachComment)))
 })
+
+//update a comment
+app.put("/posts/:blogId/comments/:commentId",authenticationToken,async(request,response)=>{
+    const {blogId,commentId} = request.params
+    const date = new Date()
+    const {comment} = request.body
+    const postCommentQuery = `
+    UPDATE comments SET comment_date = "${date}", comment = "${comment}" WHERE blog_id = ${blogId} AND id = ${commentId};
+    `
+    await db.run(postCommentQuery)
+    const getComments = `SELECT * FROM comments WHERE blog_id = ${blogId}`
+    const responseComments = await db.all(getComments)
+    response.send(responseComments.map(eachComment=>commentDetails(eachComment)))
+})
+
+//delete a comment
 app.delete("/comments/:id",authenticationToken,async(request,response)=>{
     const {id} = request.params
     const deleteComment = `DELETE FROM comments WHERE id = ${id}`
@@ -247,6 +240,8 @@ app.delete("/comments/:id",authenticationToken,async(request,response)=>{
     const responseComments = await db.all(getCommentQuery)
     response.send(responseComments.map(eachComment=> commentDetails(eachComment)))
 })
+
+//delete a post
 app.delete("/posts/:id",authenticationToken,async(request,response)=>{
     const {id} = request.params
     const deletePost = `DELETE FROM blog WHERE id = ${id}`
