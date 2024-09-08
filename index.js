@@ -194,7 +194,7 @@ app.get("/posts/:id/comments",async(request,response)=>{
 })
 
 //get the post comment count
-app.get("/comments/:id",authenticationToken,async(request,response)=>{
+app.get("/comments/:id",async(request,response)=>{
     const {id} = request.params
     const getCommentQuery = `SELECT COUNT(*) as comments_count FROM comments WHERE blog_id = ${id}`
     const responseComments = await db.get(getCommentQuery)
