@@ -193,6 +193,22 @@ app.get("/posts/:id/comments",async(request,response)=>{
     response.send(responseComments.map(eachComment=> commentDetails(eachComment)))
 })
 
+//get the user posts comment count
+app.get("/user/commentsCount/",authenticationToken,async(request,response)=>{
+    const {user_id} = request
+    const getCommentQuery = `SELECT COUNT(*) as user_post_count FROM comments WHERE user_id = ${user_id}`
+    const responseComments = await db.get(getCommentQuery)
+    response.send(responseComments)
+})
+
+//get the user posts count
+app.get("/user/postsCount/",authenticationToken,async(request,response)=>{
+    const {user_id} = request
+    const getCommentQuery = `SELECT COUNT(*) as user_post_count FROM blog WHERE user_id = ${user_id}`
+    const responseComments = await db.get(getCommentQuery)
+    response.send(responseComments)
+})
+
 //get the post comment count
 app.get("/comments/:id",async(request,response)=>{
     const {id} = request.params

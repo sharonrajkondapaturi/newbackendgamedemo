@@ -95,6 +95,18 @@ GET http://localhost:4000/comments/4
 Content-Type: application/json
 Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJLZXZpbiIsImlhdCI6MTcyNTYyNTE4MH0.-l6B73jb6jZ6ZNr8gtm9Yma2Mrh8TJjV_lcYRFKzFto
 
+
+###
+
+GET http://localhost:4000/user/commentsCount
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywidXNlcm5hbWUiOiJIYW5uYWgiLCJpYXQiOjE3MjU5ODE0OTB9.FZy0R6mI2GVSDu26bAYgvBOZYLCA9n8jGMbXgK1zo_M
+
+###
+
+GET http://localhost:4000/user/postsCount
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywidXNlcm5hbWUiOiJIYW5uYWgiLCJpYXQiOjE3MjU5ODE0OTB9.FZy0R6mI2GVSDu26bAYgvBOZYLCA9n8jGMbXgK1zo_M
 ###
 
 POST http://localhost:4000/posts/1/comments/
