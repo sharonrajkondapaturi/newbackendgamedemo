@@ -196,7 +196,7 @@ app.get("/posts/:id/comments",async(request,response)=>{
 //get the user posts comment count
 app.get("/user/commentsCount/",authenticationToken,async(request,response)=>{
     const {user_id} = request
-    const getCommentQuery = `SELECT COUNT(*) as user_post_count FROM comments WHERE user_id = ${user_id}`
+    const getCommentQuery = `SELECT COUNT(*) as user_comment_count FROM comments WHERE user_id = ${user_id}`
     const responseComments = await db.get(getCommentQuery)
     response.send(responseComments)
 })
